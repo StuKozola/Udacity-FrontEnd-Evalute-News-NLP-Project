@@ -1,14 +1,13 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-// sentiment api from Meaning Cloud
-var textapi = new mc_api({
-    application_key: process.env.API_KEY
-    });
-
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+
+// sentiment api from MeaningCloud
+const MC_URL = 'https://api.meaningcloud.com/sentiment-2.1'
+const apiKey = process.env.API_KEY;
 
 const app = express()
 
@@ -26,6 +25,19 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
+// test request
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+//POST method for url and processing of an article for sentiment analysis
+app.post('/url', async (req,resp) => {
+    const response = await fetch(`{$MC_URL}?key={$apiKey}&url={$req.body}`);
+    console.log('url:', response);
+    try {
+        const data = await response.json();
+        res.send(data);
+    } catch (error){
+        console.log('ERROR:', error)
+    }
+});
