@@ -2,29 +2,34 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-// set epxress and app defaults
+// set express and app defaults
 var path = require('path')
 const express = require('express')
+const cors = require('cors');
 const mockAPIResponse = require('./mockAPI.js')
 
 // sentiment api from MeaningCloud
 const MC_URL = 'https://api.meaningcloud.com/sentiment-2.1'
 const apiKey = process.env.API_KEY;
 
+// ports from .env
+const PORT = process.env.PORT;
+
 const app = express()
 
+app.use(cors());
 app.use(express.static('dist'))
 
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    //res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+app.listen(PORT, function () {
+    console.log(`App listening on port ${PORT}!`)
 })
 
 // test request
