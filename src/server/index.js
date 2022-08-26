@@ -1,6 +1,8 @@
+// load secrets and config information
 const dotenv = require('dotenv');
 dotenv.config();
 
+// set epxress and app defaults
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
