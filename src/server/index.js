@@ -6,6 +6,7 @@ dotenv.config();
 var path = require('path')
 const express = require('express')
 const cors = require('cors');
+const fetch = require('node-fetch')
 const mockAPIResponse = require('./mockAPI.js')
 
 // sentiment api from MeaningCloud
@@ -38,9 +39,11 @@ app.get('/test', function (req, res) {
 })
 
 //POST method for url and processing of an article for sentiment analysis
-app.post('/url', async (req,resp) => {
-    const response = await fetch(`{$MC_URL}?key={$apiKey}&url={$req.body}`);
-    console.log('url:', response);
+app.post('/url', async (req,res) => {
+    const url = `${MC_URL}?key=${apiKey}&url=${req.body}`;
+    console.log('URL: ', url);
+    const response = await fetch(url);
+    console.log('Response: ', response);
     try {
         const data = await response.json();
         res.send(data);
