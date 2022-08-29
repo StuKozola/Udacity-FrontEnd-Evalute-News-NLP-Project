@@ -5,7 +5,9 @@ function checkForURL(inputText) {
 
     // test for valid url
     if( !urlPattern.test(inputText) ) {
-        alert('Invalid URL, Please Try Again');
+        if (typeof window !== 'undefined'){
+            alert('Invalid URL, Please Try Again');
+        }
         return false;
     }
 

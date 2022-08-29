@@ -47,7 +47,7 @@ npm run build-prod
 npm run start
 ```
 
-To run the jest test:
+To run the jest tests:
 ```bash
 npm run test
 ```

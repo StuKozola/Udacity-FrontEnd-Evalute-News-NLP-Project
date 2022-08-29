@@ -1,14 +1,49 @@
-// Import the js file to test
-import { handleSubmit } from "../src/client/js/formHandler"
+/**
+ * @jest-environment jsdom
+ */
+import { sentiment } from "../src/client/js/formHandler"
 
-// The describe() function takes two arguments - a string description, and a test suite as a callback function.  
-// A test suite may contain one or more related tests    
-describe("Testing the submit functionality", () => {
-    // The test() function has two arguments - a string description, and an actual test as a callback function.  
-    test("Testing the handleSubmit() function", () => {
-        // Define the input for the function, if any, in the form of variables/array
-        // Define the expected output, if any, in the form of variables/array
-        // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
-        // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-        expect(handleSubmit).toBeDefined();
-    })});
+describe("Testing the sentiment functionality", () => {
+    document.body.innerHTML = 
+        '<p id="results"></p>' +
+        '<p id="score"></p>' +
+        '<p id="subjectivity"></p>' +
+        '<p id="confidence"></p>' +
+        '<p id="irony"></p>' +
+        '<p id="text"></p>';
+        
+    test("Testing the P+ case", () => {
+        const tag = 'P+';
+        expect(sentiment(tag)).toBe('P+ (Strong positive)');
+    })
+
+    test("Testing the P case", () => {
+        const tag = 'P';
+        expect(sentiment(tag)).toBe('P (Positive)');
+    })
+
+    test("Testing the NEU case", () => {
+        const tag = 'NEU';
+        expect(sentiment(tag)).toBe('NEU (Neutral)');
+    })
+
+    test("Testing the N+ case", () => {
+        const tag = 'N+';
+        expect(sentiment(tag)).toBe('N+ (Strong negative)');
+    })
+
+    test("Testing the N case", () => {
+        const tag = 'N';
+        expect(sentiment(tag)).toBe('N (Negative)');
+    })
+
+    test("Testing the NONE case", () => {
+        const tag = 'NONE';
+        expect(sentiment(tag)).toBe('NONE (Without sentiment)');
+    })
+
+    test("Testing the empty case", () => {
+        const tag = '';
+        expect(sentiment(tag)).toBe('No data');
+    })
+});

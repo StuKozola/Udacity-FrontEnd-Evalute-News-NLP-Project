@@ -9,7 +9,9 @@ function checkForName(inputText) {
     ]
 
     if(names.includes(inputText)) {
-        alert("Welcome, Captain!");
+        if (typeof window !== 'undefined'){
+            alert("Welcome, Captain!");
+        }
         return true
     }
     return false
