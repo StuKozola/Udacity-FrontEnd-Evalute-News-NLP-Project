@@ -1,0 +1,13 @@
+footer {
+    text-align: center;
+    font-size: .8rem;
+    padding: 1rem;
+    margin: 1ream;
+
+    a {
+        color: gray;
+        &hover, &active {
+            color: slategray;
+        }
+    }
+}

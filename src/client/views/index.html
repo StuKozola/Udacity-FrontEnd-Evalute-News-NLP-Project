@@ -12,21 +12,28 @@
                 <img src="logo.png" alt="Link Score Logo">
             </div>
             <div class="nav">
-                navigation
+                <ul class="navbar">
+                    <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                    <li><a href="https://github.com/StuKozola/Udacity-FrontEnd-Evalute-News-NLP-Project"><i class="fab fa-github"></i></a></li>
+                    <li><a href="https://www.meaningcloud.com/developer/sentiment-analysis/doc/"><i class="fa fa-link"></i></a></li>
+                </ul>
             </div>
         </header>
 
         <main>
             <section class="url2score">
+                <h1>Evaluate News with NLP</h1>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <p>Please enter a URL to an article you would like evaluate using Natural Language Processing (NLP) </p>
                     <input id="name" type="text" name="input" value="" placeholder="Enter a valid URL">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
 
             <section class="eval">
-                <strong>Link Score Evaluation:</strong>
-                <div id="results">
+                <h2>Link Score Evaluation:</h2>
+                <div id="NLP_Summary">
+                    <p id="results"></p>
                     <p id="score"></p>
                     <p id="subjectivity"></p>
                     <p id="confidence"></p>
@@ -37,7 +44,7 @@
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Project powered by <a href="https://www.meaningcloud.com/developer/sentiment-analysis/doc/">Meaning Cloud Sentiment Analysis API</a></p>
         </footer>
 
         <script>
