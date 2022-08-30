@@ -52,5 +52,8 @@ To run the jest tests:
 npm run test
 ```
 
+Example test result:
+![Screenshot](/src/client/img/test_results.png)
+
 # License
 MIT License - Copyright (c) 2022 Stuart Kozola
